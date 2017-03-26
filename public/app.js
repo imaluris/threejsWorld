@@ -145,14 +145,15 @@ function init() {
     
 
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
+    camera.position.x = 1;
+    camera.position.y = 1;
+    camera.position.z = 14;
     
     scene.add(camera);
 
     document.addEventListener('keydown', Keyboard, false);
 
-    camera.position.y = 0.3;
-    camera.position.x = 1;
-    camera.position.z = -15;
+
     
         
 
