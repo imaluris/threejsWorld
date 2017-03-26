@@ -1,10 +1,11 @@
 var scene, camera, renderer;
 var cubes = [];
+var rings = [];
 
 init();
 
 
-plane(0,0,0);
+ground2();
 wall(0.3,2,5,-6.9,1,-0.5,0x003300);
 wall(0.3,2,8.5,-8.25,1,-0.5,0x003300);
 wall(8,2,0.3,6.4,1,3.85,0x003300);
@@ -51,54 +52,58 @@ tree(-3.0,1,-24.6)
 wall(7,1,0.8,0.9,0.5,-24.6,0x003300);//garden center
 tree(4.7,1,-24.6)
 wall(6,1,0.8,7.4,0.5,-24.6,0x003300);//garden center
-lightBulb(-6,1,-8,-7,3,-7);//left
-lightBulb(-6,1,-22,-7,3,-21);//left
-lightBulb(8,1,-8, 7.5, 3.1, -6.8);//right
-lightBulb(8,1,-22, 7, 3.1, -21);//right
-lamp(8,1.5,5, 8, 3.5, 6);//right
-lamp(-6,1.5,5,-7,3.5,6);//left
-lamp(1,1.5,15,0,3.5,16);//center
+//lightBulb(-6,1,-8,-6,3,-8);//left
+//lightBulb(-6,1,-22,-7,3,-21);//left
+//lightBulb(8,1,-8, 7.5, 3.1, -6.8);//right
+//lightBulb(8,1,-22, 7, 3.1, -21);//right
+//lamp(8,1.5,5, 8, 3.5, 6);//right
+//lamp(-6,1.5,5,-7,3.5,6);//left
+//lamp(1,1.5,15,0,3.5,16);//center
 moon();
 
 //Faccia inferiore
 
-cubes[0] = setCube(0.3,0.3,0.3,0.5,0.5,-20,0x6600CC);
-cubes[1] = setCube(0.3,0.3,0.3,1,0.5,-20,0x6600CC);
-cubes[2] = setCube(0.3,0.3,0.3,1.5,0.5,-20,0x6600CC);
-cubes[3] = setCube(0.3,0.3,0.3,0.5,0.5,-19.5,0x6600CC);
-cubes[4] = setCube(0.3,0.3,0.3,1,0.5,-19.5,0x6600CC);
-cubes[5] = setCube(0.3,0.3,0.3,1.5,0.5,-19.5,0x6600CC);
-cubes[6] = setCube(0.3,0.3,0.3,0.5,0.5,-19,0x6600CC);
-cubes[7] = setCube(0.3,0.3,0.3,1,0.5,-19,0x6600CC);
-cubes[8] = setCube(0.3,0.3,0.3,1.5,0.5,-19,0x6600CC);
+cubes[0] = setCube(0.3,0.3,0.3,0.5,1.5,-20,0x0000ff);
+cubes[1] = setCube(0.3,0.3,0.3,1,1.5,-20,0x0000ff);
+cubes[2] = setCube(0.3,0.3,0.3,1.5,1.5,-20,0x0000ff);
+cubes[3] = setCube(0.3,0.3,0.3,0.5,1.5,-19.5,0x0000ff);
+cubes[4] = setCube(0.3,0.3,0.3,1,1.5,-19.5,0x0000ff);
+cubes[5] = setCube(0.3,0.3,0.3,1.5,1.5,-19.5,0x0000ff);
+cubes[6] = setCube(0.3,0.3,0.3,0.5,1.5,-19,0x0000ff);
+cubes[7] = setCube(0.3,0.3,0.3,1,1.5,-19,0x0000ff);
+cubes[8] = setCube(0.3,0.3,0.3,1.5,1.5,-19,0x0000ff);
 
 //Faccia centrale
 
-cubes[9] = setCube(0.3,0.3,0.3,0.5,1,-20,0x33FFCC);
-cubes[10] = setCube(0.3,0.3,0.3,1,1,-20,0x33FFCC);
-cubes[11] = setCube(0.3,0.3,0.3,1.5,1,-20,0x33FFCC);
-cubes[12] = setCube(0.3,0.3,0.3,0.5,1,-19.5,0x33FFCC);
-cubes[13] = setCube(0.3,0.3,0.3,1,1,-19.5,0x33FFCC);
-cubes[14] = setCube(0.3,0.3,0.3,1.5,1,-19.5,0x33FFCC);
-cubes[15] = setCube(0.3,0.3,0.3,0.5,1,-19,0x33FFCC);
-cubes[16] = setCube(0.3,0.3,0.3,1,1,-19,0x33FFCC);
-cubes[17] = setCube(0.3,0.3,0.3,1.5,1,-19,0x33FFCC);
+cubes[9] = setCube(0.3,0.3,0.3,0.5,2,-20,0x00ff00);
+cubes[10] = setCube(0.3,0.3,0.3,1,2,-20,0x00ff00);
+cubes[11] = setCube(0.3,0.3,0.3,1.5,2,-20,0x00ff00);
+cubes[12] = setCube(0.3,0.3,0.3,0.5,2,-19.5,0x00ff00);
+cubes[13] = setCube(0.3,0.3,0.3,1,2,-19.5,0x00ff00);
+cubes[14] = setCube(0.3,0.3,0.3,1.5,2,-19.5,0x00ff00);
+cubes[15] = setCube(0.3,0.3,0.3,0.5,2,-19,0x00ff00);
+cubes[16] = setCube(0.3,0.3,0.3,1,2,-19,0x00ff00);
+cubes[17] = setCube(0.3,0.3,0.3,1.5,2,-19,0x00ff00);
 
 //Faccia superiore
 
-cubes[18] = setCube(0.3,0.3,0.3,0.5,1.5,-20,0x000099);
-cubes[19] = setCube(0.3,0.3,0.3,1,1.5,-20,0x000099);
-cubes[20] = setCube(0.3,0.3,0.3,1.5,1.5,-20,0x000099);
-cubes[21] = setCube(0.3,0.3,0.3,0.5,1.5,-19.5,0x000099);
-cubes[22] = setCube(0.3,0.3,0.3,1,1.5,-19.5,0x000099);
-cubes[23] = setCube(0.3,0.3,0.3,1.5,1.5,-19.5,0x000099);
-cubes[24] = setCube(0.3,0.3,0.3,0.5,1.5,-19,0x000099);
-cubes[25] = setCube(0.3,0.3,0.3,1,1.5,-19,0x000099);
-cubes[26] = setCube(0.3,0.3,0.3,1.5,1.5,-19,0x000099);
+cubes[18] = setCube(0.3,0.3,0.3,0.5,2.5,-20,0xff0000);
+cubes[19] = setCube(0.3,0.3,0.3,1,2.5,-20,0xff0000);
+cubes[20] = setCube(0.3,0.3,0.3,1.5,2.5,-20,0xff0000);
+cubes[21] = setCube(0.3,0.3,0.3,0.5,2.5,-19.5,0xff0000);
+cubes[22] = setCube(0.3,0.3,0.3,1,2.5,-19.5,0xff0000);
+cubes[23] = setCube(0.3,0.3,0.3,1.5,2.5,-19.5,0xff0000);
+cubes[24] = setCube(0.3,0.3,0.3,0.5,2.5,-19,0xff0000);
+cubes[25] = setCube(0.3,0.3,0.3,1,2.5,-19,0xff0000);
+cubes[26] = setCube(0.3,0.3,0.3,1.5,2.5,-19,0xff0000);
+
+rings[0] = ring(0xffffff);
+rings[0].rotation.x = -Math.PI/2;
+rings[1] = ring(0xffffff);
 
 
 
-
+//plane(0,0,0);
 star();
 animate();
 
@@ -114,18 +119,28 @@ function init() {
     // Create a renderer and add it to the DOM.
     renderer = new THREE.WebGLRenderer({antialias:true});
     renderer.setSize(WIDTH, HEIGHT);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    //renderer.shadowMapCullFrontFaces = false;
     document.body.appendChild(renderer.domElement);
 
     //Directional light
 
-        var light = new THREE.PointLight( 0xffffff, 1, 3000);
-        light.position.set( 50, 40, -100 );
+        var light = new THREE.DirectionalLight( 0xffffff, 1);
+        light.position.set(50,40,-100);
+        light.castShadow = true;
+        light.shadow.camera.near = 1;
+        light.shadowCameraLeft = -30;
+        light.shadowCameraRight = 30;
+        light.shadowCameraTop = 30;
+        light.shadowCameraBottom = -30;
         scene.add( light );
 
-    
-    
-
-
+        var lightHelp = new THREE.AmbientLight( 0x808080, 0.5)
+        scene.add( lightHelp );
+        
+       var helper = new THREE.CameraHelper( light.shadow.camera );
+       scene.add( helper );
     
 
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
@@ -142,25 +157,25 @@ function init() {
 
   }
    
-    function plane (x, y, z){
-            // plane
-            var geometry = new THREE.PlaneGeometry( 400,400 );
-            var material = new THREE.MeshLambertMaterial( { color: 0x66CC33, side: THREE.DoubleSide } );
-            var ground = new THREE.Mesh( geometry, material );
+   
 
-            ground.position.y = -1.9; //lower it 
-			      ground.rotation.x = -Math.PI/2; //-90 degrees around the xaxis 
-			//IMPORTANT, draw on both sides 
+function ground2(){
 
-			      ground.position.x = x;
-            ground.position.y = y;
-            ground.position.z = z;
+//Create a plane that receives shadows (but does not cast them)
+            var planeGeometry = new THREE.PlaneBufferGeometry( 400,400);
+            var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } )
+            var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+            plane.receiveShadow = true;
+            scene.add( plane );
 
-			      scene.add(ground); 
+            plane.position.x = 0;
+            plane.position.y = 0;
+            plane.position.z = 0;
 
+            plane.rotation.x =  Math.PI / 2;
             
-
-  }
+            
+}
 
   function wall(a,b,c,x,y,z,color){
 
@@ -173,18 +188,44 @@ function init() {
             wall.position.y = y;
             wall.position.z = z;
 
+            wall.castShadow = true;
+            wall.receiveShadow = true;
+
             
         }
+  
+function ring(color){
+
+      var geometry = new THREE.TorusBufferGeometry( 1.5, 0.1, 16, 100 );
+      var material = new THREE.MeshLambertMaterial( { color: color } );
+      var torus = new THREE.Mesh( geometry, material );
+      scene.add( torus );
+
+      torus.position.x = 1;
+      torus.position.y = 2;
+      torus.position.z = -19.5;
+
+            torus.castShadow = true;
+            torus.receiveShadow = true;
+      
+
+      return torus;
+
+} 
 
 function lightBulb(x,y,z,a,b,c){
 
 
-        cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 2, 100, 100, false), new THREE.MeshLambertMaterial({color: 0x000000}));
+        cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 2, 100, 100, false), new THREE.MeshPhongMaterial({color: 0x000000}));
+        cylinder.castShadow = true;
+        cylinder.receiveShadow = false;
 		    scene.add(cylinder);
 
         cylinder.position.x = x;
         cylinder.position.y = y;
         cylinder.position.z = z;
+
+
 
         var geometry = new THREE.SphereGeometry(0.3,32,32);
 			  var material = new THREE.MeshLambertMaterial( { color: 0xFFFF99 } );
@@ -195,9 +236,13 @@ function lightBulb(x,y,z,a,b,c){
         sphere.position.y = 2;
         sphere.position.z = z;
 
-        var light = new THREE.PointLight( 0xffffff, 1, 50, 1.5);
+            sphere.castShadow = true;
+            sphere.receiveShadow = false;
+
+        var light = new THREE.PointLight( 0xffffff, 1, 20);
         light.position.set( a, b, c );
         scene.add( light );
+
 
 
 }
@@ -205,12 +250,15 @@ function lightBulb(x,y,z,a,b,c){
 function lamp(x,y,z,a,b,c){
 
 
-        cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 3, 100, 100, false), new THREE.MeshLambertMaterial({color: 0x000000}));
+        cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 3, 100, 100, false), new THREE.MeshPhongMaterial({color: 0x000000}));
 		    scene.add(cylinder);
 
         cylinder.position.x = x;
         cylinder.position.y = y;
         cylinder.position.z = z;
+
+            cylinder.castShadow = true;
+            cylinder.receiveShadow = false;
 
         var geometry = new THREE.SphereGeometry(0.3,32,32);
 			  var material = new THREE.MeshLambertMaterial( { color: 0xFFFF99 } );
@@ -221,8 +269,12 @@ function lamp(x,y,z,a,b,c){
         sphere.position.y = 3;
         sphere.position.z = z;
 
-        var light = new THREE.PointLight( 0xffffff, 1, 50, 1);
+        sphere.castShadow = true;
+        sphere.receiveShadow = false;
+
+        var light = new THREE.PointLight( 0xffffff, 1, 20);
         light.position.set( a, b, c );
+        
         scene.add( light );
 
 
@@ -251,6 +303,9 @@ function setCube (a, b, c, x, y, z, color){
             cube.position.y = y;
             cube.position.z = z;
 
+            cube.castShadow = true;
+            cube.receiveShadow = true;
+
       return cube;
 
 
@@ -264,7 +319,11 @@ function setCube (a, b, c, x, y, z, color){
         cylinder.position.x = x;
         cylinder.position.y = y;
         cylinder.position.z = z;
+
 		    scene.add(cylinder);
+
+        cylinder.castShadow = true;
+        cylinder.receiveShadow = true;
 
 }
 
@@ -276,11 +335,17 @@ function tree(x,y,z){
         cone.position.z = z;
 		scene.add(cone);
 
+    cone.castShadow = true;
+    cone.receiveShadow = true;
+
     cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 2, 100, 100, false), new THREE.MeshLambertMaterial({color: 0x422515}));
         cylinder.position.x = x;
         cylinder.position.y = y;
         cylinder.position.z = z;
 		scene.add(cylinder);
+
+    cylinder.castShadow = true;
+    cylinder.receiveShadow = true;
 
 
 
@@ -350,10 +415,19 @@ function star(){
       		cube.rotation.y += 0.05;
           cube.rotation.x += 0.05;
     });
+
+    rings.forEach(function(torus) {
+      		torus.rotation.x += 0.05;
+          torus.rotation.y += 0.07;
+    });
+
+    //torus.rotation.x +=0.05;
  
-    // Render the scene.
+    
     renderer.render(scene, camera);
-    //controls.update();
+    
+
+    
  
   }
 
