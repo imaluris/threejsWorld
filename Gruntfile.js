@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       },
     },
     concurrent: {
-      vaiamicomio: ['watch', 'serve', 'open:dev'],
+      startProg: ['watch', 'serve', 'open:dev'],
 			options: {
 				logConcurrentOutput: true
 			}
@@ -49,6 +49,7 @@ module.exports = function(grunt) {
   
 
   // Default task(s).
-  grunt.registerTask('default', ['browserify', 'concurrent:vaiamicomio']);
+  grunt.registerTask('start', ['browserify', 'concurrent:startProg']);
+  
 
 };
