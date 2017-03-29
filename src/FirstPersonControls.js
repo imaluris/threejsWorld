@@ -19,7 +19,6 @@ THREE.FirstPersonControls = function (object, domElement) {
     // this.invertVertical = false;
 
     this.activeLook = true;
-    this.walls = [];
 
     this.heightSpeed = false;
     this.heightCoef = 1.0;
@@ -187,58 +186,9 @@ THREE.FirstPersonControls = function (object, domElement) {
 
     };
 
-
-
-     this.rays = [
-      new THREE.Vector3(0, 0, 1),
-      new THREE.Vector3(1, 0, 1),
-      new THREE.Vector3(1, 0, 0),
-      new THREE.Vector3(1, 0, -1),
-      new THREE.Vector3(0, 0, -1),
-      new THREE.Vector3(-1, 0, -1),
-      new THREE.Vector3(-1, 0, 0),
-      new THREE.Vector3(-1, 0, 1)
-    ];
-
-    this.caster = new THREE.Raycaster();
-
-    this.collision = function () {
-        'use strict';
-        var collisions, i,
-        // Maximum distance from the origin before we consider collision
-        distance = 32,
-        obstacles = this.walls;
-        // For each ray
-        for (i = 0; i < this.rays.length; i += 1) {
-            // We reset the raycaster to this direction
-            this.caster.set(this.object.position, this.rays[i]);
-            // Test if we intersect with any obstacle mesh
-            collisions = this.caster.intersectObjects(obstacles);
-            // And disable that direction if we do
-            if (collisions.length > 0 && collisions[0].distance <= distance) {
-                return false;
-                // Yep, this.rays[i] gives us : 0 => up, 1 => up-left, 2 => left, ...
-                // if ((i === 0 || i === 1 || i === 7) && this.direction.z === 1) {
-                // this.direction.setZ(0);
-                // } else if ((i === 3 || i === 4 || i === 5) && this.direction.z === -1) {
-                // this.direction.setZ(0);
-                // }
-                // if ((i === 1 || i === 2 || i === 3) && this.direction.x === 1) {
-                // this.direction.setX(0);
-                // } else if ((i === 5 || i === 6 || i === 7) && this.direction.x === -1) {
-                // this.direction.setX(0);
-                // }
-            }
-        }
-        return true;
-    };
-
-
-
-
     this.update = function (delta) {
 
-        if (this.freeze || this.collision())  {
+        if (this.freeze) {
 
             return;
 
