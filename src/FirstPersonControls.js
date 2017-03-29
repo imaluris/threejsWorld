@@ -35,7 +35,7 @@ THREE.FirstPersonControls = function (object, domElement) {
     this.mouseY = 0;
 
     this.lat = 0;
-    this.lon = 0;
+    this.lon = -90;
     this.phi = 0;
     this.theta = 0;
 
@@ -50,13 +50,14 @@ THREE.FirstPersonControls = function (object, domElement) {
     this.viewHalfX = 0;
     this.viewHalfY = 0;
 
+
     if (this.domElement !== document) {
 
         this.domElement.setAttribute('tabindex', -1);
 
     }
 
-    //
+    
 
     this.handleResize = function () {
 

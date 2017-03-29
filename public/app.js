@@ -7,8 +7,6 @@ var rings = [];
 
 
 init();
-
-
 ground2();
 walls[0] = wall(0.3, 2, 5, -6.9, 1, -0.5, 0x003300);
 walls[1] = wall(0.3, 2, 8.5, -8.25, 1, -0.5, 0x003300);
@@ -20,27 +18,30 @@ walls[6] = wall(0.3, 2, 5, 8.9, 1, -0.5, 0x003300);
 walls[7] = wall(0.3, 2, 8.5, 10.25, 1, -0.5, 0x003300);
 walls[8] = wall(0.3, 2, 4, -0.3, 1, 12, 0x003300);
 walls[9] = wall(0.3, 2, 4, 2.3, 1, 12, 0x003300);
-walls[10] = wall(2.9, 2, 0.3, 1, 1, 14, 0x003300);//
+walls[10] = wall(2.9, 2, 0.3, 1, 1, 14, 0x003300);
 walls[11] = wall(8, 2, 0.3, 6.4, 1, -4.85, 0x003300);
 walls[12] = wall(8, 2, 0.3, -4.4, 1, -4.85, 0x003300);
 walls[13] = wall(0.3, 2, 2, -0.3, 1, -5.7, 0x003300);
 walls[14] = wall(0.3, 2, 2, 2.3, 1, -5.7, 0x003300);
 walls[15] = wall(0.3, 2, 6, 6.3, 1, 7, 0x003300);
 walls[16] = wall(0.3, 2, 6, -4.3, 1, 7, 0x003300);
-column(-0.3, 1, -7.5)
-column(-0.3, 1, -9.5)
-column(-0.3, 1, -11.5)
-column(-0.3, 1, -13.5)
-column(2.3, 1, -7.5)
-column(2.3, 1, -9.5)
-column(2.3, 1, -11.5)
-column(2.3, 1, -13.5)
-walls[17] = wall(3, 0.3, 7.2, 1, 2, -10.5, 0x333333);//tetto
 walls[18] = wall(4.3, 2, 0.3, -2.3, 1, 10, 0x003300);
 walls[19] = wall(4.3, 2, 0.3, 4.3, 1, 10, 0x003300);
 walls[20] = wall(8, 2, 0.3, 1, 1, 8, 0x003300);
 walls[21] = wall(0.3, 2, 3, 4.85, 1, 6.5, 0x003300);
 walls[22] = wall(0.3, 2, 3, -2.85, 1, 6.5, 0x003300);
+//garden
+//column left
+column(-0.3, 1, -7.5)
+column(-0.3, 1, -9.5)
+column(-0.3, 1, -11.5)
+column(-0.3, 1, -13.5)
+//column right
+column(2.3, 1, -7.5)
+column(2.3, 1, -9.5)
+column(2.3, 1, -11.5)
+column(2.3, 1, -13.5)
+walls[17] = wall(3, 0.3, 7.2, 1, 2, -10.5, 0x333333);//tetto
 walls[23] = wall(0.8, 1, 6.5, 10, 0.5, -8.2, 0x003300);//garden right
 tree(10, 1, -11)
 walls[24] = wall(0.8, 1, 6.5, 10, 0.5, -14.7, 0x003300);//garden right
@@ -63,8 +64,8 @@ walls[31] = wall(6, 1, 0.8, 7.4, 0.5, -24.6, 0x003300);//garden center
 //lamp(8,1.5,5, 8, 3.5, 6);//right
 //lamp(-6,1.5,5,-7,3.5,6);//left
 //lamp(1,1.5,15,0,3.5,16);//center
-moon();
 
+//Cubo
 //Faccia inferiore
 
 cubes[0] = setCube(0.3, 0.3, 0.3, 0.5, 1.5, -20, 0x0000ff);
@@ -105,9 +106,7 @@ rings[0] = ring(0xffffff);
 rings[0].rotation.x = -Math.PI / 2;
 rings[1] = ring(0xffffff);
 
-
-
-
+moon();
 star();
 animate();
 
@@ -115,12 +114,12 @@ animate();
 
 function init() {
 
-  // Create the scene and set the scene size.
+  // scene
   scene = new THREE.Scene();
   var WIDTH = window.innerWidth,
     HEIGHT = window.innerHeight;
 
-  // Create a renderer and add it to the DOM.
+  // renderer.
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(WIDTH, HEIGHT);
   renderer.shadowMap.enabled = true;
@@ -140,45 +139,45 @@ function init() {
   light.shadowCameraBottom = -30;
   scene.add(light);
 
+  //Luce ambientale in aggiunta
+
   var lightHelp = new THREE.AmbientLight(0x808080, 0.5)
   scene.add(lightHelp);
 
 
-
+  //Nebbia
   scene.fog = new THREE.Fog(0x000000, 10, 30);
   scene.fog2 = new THREE.Fog(0x000000, -20, -30);
 
-
+  //Camera
   camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
   camera.position.x = 1;
   camera.position.y = 1;
-  camera.position.z = 14;
+  camera.position.z = 12;
+  camera.lookAt(1,1,20);
 
   scene.add(camera);
 
+  //clock per controlli
   clock = new THREE.Clock();
   delta = clock.getDelta();
 
-
+  //controlli 
+  
   controls = new THREE.FirstPersonControls(camera);
   controls.movementSpeed = 2500;
-  controls.lookSpeed = 200;
+  controls.lookSpeed = 100;
   controls.noFly = false;
   controls.lookVertical = false;
   controls.activeLook = true;
-  controls.walls = walls;
 
-
-  //document.addEventListener('keydown', Keyboard, false);
-
-
+  //controls2 = new THREE.OrbitControls(camera);
+  
 }
-
-
 
 function ground2() {
 
-  //Create a plane that receives shadows (but does not cast them)
+  //Create a plane 
   var planeGeometry = new THREE.PlaneBufferGeometry(400, 400);
   var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
   var plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -188,7 +187,6 @@ function ground2() {
   plane.position.x = 0;
   plane.position.y = 0;
   plane.position.z = 0;
-
   plane.rotation.x = Math.PI / 2;
 
 
@@ -327,7 +325,6 @@ function column(x, y, z) {
 
   cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 2), new THREE.MeshLambertMaterial({ color: 0x333333 }));
 
-
   cylinder.position.x = x;
   cylinder.position.y = y;
   cylinder.position.z = z;
@@ -377,28 +374,14 @@ function star() {
 
     scene.add(mesh);
 
-
   }
 
 }
 
 
-function getObstacles() {
-    'use strict';
-    return walls;
-  }
-
-
-
-
-
 function animate() {
 
-  // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
   requestAnimationFrame(animate);
-
-  //console.log(clock);
-  //console.log(delta);
 
   cubes.forEach(function (cube) {
     cube.rotation.y += 0.05;
@@ -416,11 +399,5 @@ function animate() {
 
   renderer.render(scene, camera);
 
-
-
-
 }
-
-
-
 },{}]},{},[1]);
