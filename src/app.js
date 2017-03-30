@@ -164,8 +164,8 @@ function init() {
   //controlli 
   
   controls = new THREE.FirstPersonControls(camera);
-  controls.movementSpeed = 2500;
-  controls.lookSpeed = 100;
+  controls.movementSpeed = 3000;
+  controls.lookSpeed = 200;
   controls.noFly = false;
   controls.lookVertical = false;
   controls.activeLook = true;
@@ -337,9 +337,9 @@ function column(x, y, z) {
 
 function tree(x, y, z) {
 
-  cone = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 3, 50, 100, false), new THREE.MeshLambertMaterial({ color: 0x003300 }));
+  cone = new THREE.Mesh(new THREE.CylinderGeometry(0, 1, 5, 50, 100, false), new THREE.MeshLambertMaterial({ color: 0x003300 }));
   cone.position.x = x;
-  cone.position.y = 3.5;
+  cone.position.y = 4.5;
   cone.position.z = z;
   scene.add(cone);
 
