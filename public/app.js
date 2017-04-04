@@ -146,8 +146,8 @@ function init() {
 
 
   //Nebbia
-  scene.fog = new THREE.Fog(0x000000, 10, 30);
-  scene.fog2 = new THREE.Fog(0x000000, -20, -30);
+  scene.fog = new THREE.Fog(0x000000, 5, 20);
+  //scene.fog2 = new THREE.Fog(0x000000, -20, -30);
 
   //Camera
   camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
@@ -165,13 +165,15 @@ function init() {
   //controlli 
   
   controls = new THREE.FirstPersonControls(camera);
-  controls.movementSpeed = 3000;
-  controls.lookSpeed = 200;
+  //controls.movementSpeed = 3000;
+  //controls.lookSpeed = 200;
   controls.noFly = false;
   controls.lookVertical = false;
-  controls.activeLook = true;
+  controls.activeLook = true; 
 
   //controls2 = new THREE.OrbitControls(camera);
+
+  
   
 }
 
@@ -179,7 +181,7 @@ function ground2() {
 
   //Create a plane 
   var planeGeometry = new THREE.PlaneBufferGeometry(400, 400);
-  var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
+  var planeMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00, side: THREE.DoubleSide })
   var plane = new THREE.Mesh(planeGeometry, planeMaterial);
   plane.receiveShadow = true;
   scene.add(plane);
@@ -193,8 +195,8 @@ function ground2() {
 }
 
 function wall(a, b, c, x, y, z, color) {
-
-  var geometry = new THREE.BoxGeometry(a, b, c); //a = width, b = height, c = depth
+  //a = width, b = height, c = depth
+  var geometry = new THREE.BoxGeometry(a, b, c); 
   var material = new THREE.MeshLambertMaterial({ color: color });
   var wall = new THREE.Mesh(geometry, material);
   scene.add(wall);
