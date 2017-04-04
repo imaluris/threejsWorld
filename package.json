@@ -1,6 +1,6 @@
 {
-  "name": "cubo",
-  "basePath": "F:/User/progettofigo",
+  "name": "threejsProg",
+  "basePath": "F:/User/Documents/Development/THREEJS/progEvonove",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "^0.4.5",
