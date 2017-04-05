@@ -50,6 +50,8 @@ THREE.FirstPersonControls = function (object, domElement) {
     this.viewHalfX = 0;
     this.viewHalfY = 0;
 
+    window.onresize = function(){ location.reload(); }
+
 
     if (this.domElement !== document) {
 
@@ -122,6 +124,8 @@ THREE.FirstPersonControls = function (object, domElement) {
     };
 
     this.onMouseMove = function (event) {
+
+        
 
         if (this.domElement === document) {
 

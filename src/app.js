@@ -168,9 +168,10 @@ function init() {
   //controls.lookSpeed = 200;
   controls.noFly = false;
   controls.lookVertical = false;
-  controls.activeLook = true; 
 
   //controls2 = new THREE.OrbitControls(camera);
+
+  
 
   
   
@@ -379,6 +380,15 @@ function star() {
 
 }
 
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
 
 function animate() {
 
@@ -394,8 +404,15 @@ function animate() {
     torus.rotation.y += 0.07;
   });
 
+
+  
+
+
+
+window.addEventListener( 'resize', onWindowResize, false );
   //update for FirstPersonControls
   controls.update(delta);
+
 
 
   renderer.render(scene, camera);
