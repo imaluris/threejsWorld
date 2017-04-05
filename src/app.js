@@ -3,10 +3,9 @@ var cubes = [];
 var walls = [];
 var rings = [];
 
-
-
 init();
 ground2();
+
 walls[0] = wall(0.3, 2, 5, -6.9, 1, -0.5, 0x003300);
 walls[1] = wall(0.3, 2, 8.5, -8.25, 1, -0.5, 0x003300);
 walls[2] = wall(8, 2, 0.3, 6.4, 1, 3.85, 0x003300);
@@ -109,8 +108,6 @@ moon();
 star();
 animate();
 
-
-
 function init() {
 
   // scene
@@ -143,7 +140,6 @@ function init() {
   var lightHelp = new THREE.AmbientLight(0x808080, 0.5)
   scene.add(lightHelp);
 
-
   //Nebbia
   scene.fog = new THREE.Fog(0x000000, 5, 20);
   //scene.fog2 = new THREE.Fog(0x000000, -20, -30);
@@ -153,7 +149,7 @@ function init() {
   camera.position.x = 1;
   camera.position.y = 1;
   camera.position.z = 12;
-  camera.lookAt(1,1,20);
+  camera.lookAt(1, 1, 20);
 
   scene.add(camera);
 
@@ -162,7 +158,7 @@ function init() {
   delta = clock.getDelta();
 
   //controlli 
-  
+
   controls = new THREE.FirstPersonControls(camera);
   //controls.movementSpeed = 3000;
   //controls.lookSpeed = 200;
@@ -171,17 +167,13 @@ function init() {
 
   //controls2 = new THREE.OrbitControls(camera);
 
-  
-
-  
-  
 }
 
 function ground2() {
 
   //Create a plane 
   var planeGeometry = new THREE.PlaneBufferGeometry(400, 400);
-  var planeMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00, side: THREE.DoubleSide })
+  var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
   var plane = new THREE.Mesh(planeGeometry, planeMaterial);
   plane.receiveShadow = true;
   scene.add(plane);
@@ -191,12 +183,11 @@ function ground2() {
   plane.position.z = 0;
   plane.rotation.x = Math.PI / 2;
 
-
 }
 
 function wall(a, b, c, x, y, z, color) {
   //a = width, b = height, c = depth
-  var geometry = new THREE.BoxGeometry(a, b, c); 
+  var geometry = new THREE.BoxGeometry(a, b, c);
   var material = new THREE.MeshLambertMaterial({ color: color });
   var wall = new THREE.Mesh(geometry, material);
   scene.add(wall);
@@ -224,7 +215,6 @@ function ring(color) {
 
   torus.castShadow = true;
   torus.receiveShadow = true;
-
 
   return torus;
 
@@ -265,11 +255,9 @@ function lamp(x, y, z, a, b, c) {
 
   cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 3, 100, 100, false), new THREE.MeshPhongMaterial({ color: 0x000000 }));
   scene.add(cylinder);
-
   cylinder.position.x = x;
   cylinder.position.y = y;
   cylinder.position.z = z;
-
   cylinder.castShadow = true;
   cylinder.receiveShadow = false;
 
@@ -277,11 +265,9 @@ function lamp(x, y, z, a, b, c) {
   var material = new THREE.MeshLambertMaterial({ color: 0xFFFF99 });
   var sphere = new THREE.Mesh(geometry, material);
   scene.add(sphere);
-
   sphere.position.x = x;
   sphere.position.y = 3;
   sphere.position.z = z;
-
   sphere.castShadow = true;
   sphere.receiveShadow = false;
 
@@ -300,7 +286,6 @@ function moon() {
   moon.position.x = 50;
   moon.position.y = 40;
   moon.position.z = -100;
-
   scene.add(moon);
 
 }
@@ -310,7 +295,6 @@ function setCube(a, b, c, x, y, z, color) {
   var material = new THREE.MeshLambertMaterial({ color: color });
   var cube = new THREE.Mesh(geometry, material);
   scene.add(cube);
-
   cube.position.x = x;
   cube.position.y = y;
   cube.position.z = z;
@@ -319,20 +303,15 @@ function setCube(a, b, c, x, y, z, color) {
   cube.receiveShadow = true;
 
   return cube;
-
-
 }
 
 function column(x, y, z) {
 
   cylinder = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 2), new THREE.MeshLambertMaterial({ color: 0x333333 }));
-
   cylinder.position.x = x;
   cylinder.position.y = y;
   cylinder.position.z = z;
-
   scene.add(cylinder);
-
   cylinder.castShadow = true;
   cylinder.receiveShadow = true;
 
@@ -345,7 +324,6 @@ function tree(x, y, z) {
   cone.position.y = 4.5;
   cone.position.z = z;
   scene.add(cone);
-
   cone.castShadow = true;
   cone.receiveShadow = true;
 
@@ -354,7 +332,6 @@ function tree(x, y, z) {
   cylinder.position.y = y;
   cylinder.position.z = z;
   scene.add(cylinder);
-
   cylinder.castShadow = true;
   cylinder.receiveShadow = true;
 
@@ -380,15 +357,13 @@ function star() {
 
 }
 
-function onWindowResize(){
+function onWindowResize() {
 
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize( window.innerWidth, window.innerHeight );
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
 }
-
 
 function animate() {
 
@@ -404,16 +379,9 @@ function animate() {
     torus.rotation.y += 0.07;
   });
 
-
-  
-
-
-
-window.addEventListener( 'resize', onWindowResize, false );
+  window.addEventListener('resize', onWindowResize, false);
   //update for FirstPersonControls
   controls.update(delta);
-
-
 
   renderer.render(scene, camera);
 
